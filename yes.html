@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>You & Me 🖤</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #0f0c29, #1f1c3b, #090a1a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f2f2f2;
+  font-family: 'Cormorant Garamond', serif;
+  overflow: hidden;
+}
+
+/* 3D stars */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  animation: drift 10s linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 1; }
+}
+
+.container {
+  background: rgba(0,0,0,0.5);
+  padding: 50px;
+  border-radius: 25px;
+  max-width: 700px;
+  box-shadow: 0 0 40px rgba(255,0,80,0.3);
+  text-align: center;
+}
+
+.heart {
+  font-size: 50px;
+  color: crimson;
+  animation: beat 1.2s infinite;
+}
+
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+
+#text {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  margin-top: 20px;
+  white-space: pre-wrap;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="darkMusic" loop>
+  <source src="dark-music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <div class="heart">🖤</div>
+  <div id="text"></div>
+</div>
+
+<script>
+/* Stars */
+for(let i=0;i<80;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=5+Math.random()*8+"s";
+  document.body.appendChild(s);
+}
+
+/* Music */
+document.body.addEventListener("click", ()=>{
+  document.getElementById("darkMusic").play();
+},{once:true});
+
+/* Typing effect */
+const message = `Never imagined this for myself specially thi unique way with the best person. You are much more than just a notification on my phone. You are my safe place, my best person and someone who makes me feel extraordinary even on the most ordinary days. Even though miles apart, my heart is right there with you, and I am counting down the days until 'online' becomes 'in person' forever.I don’t promise perfection.
+I promise presence.
+Loyalty.
+And a story that feels real,
+even on the quiet days.
+If you’re here,
+I’m all in.
+ A VERY HAPPY VALENTINE'S DAY TO MY MAN :)`;
+
+let i=0;
+function type(){
+  if(i<message.length){
+    document.getElementById("text").innerHTML+=message.charAt(i);
+    i++;
+    setTimeout(type,50);
+  }
+}
+type();
+</script>
+
+</body>
+</html>
